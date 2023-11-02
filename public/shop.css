@@ -1,0 +1,484 @@
+@font-face {
+    font-family: Futura;
+    src: url(./Futura-Bold.ttf);
+}
+@font-face {
+    font-family: Gilroy;
+    src: url(./Gilroy-Medium.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gilroy';
+}
+
+*::selection {
+    color: #fff;
+    background-color: #000;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #F7F7F7;
+}
+
+#nav {
+    height: 100px;
+    width: 100%;
+    /* background-color: burlywood; */
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+#nav #nav-part2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+#links {
+    padding: 10px;
+}
+
+#nav-part1 {
+    /* background-color: RED; */
+    height: 82px;
+    overflow: hidden;
+}
+
+#nav-part1 svg {
+    display: block;
+}
+
+.menu{
+  text-align: right;
+  position: fixed;
+  width: 100%;
+  z-index: 200;
+}
+/* I hide the checkbox because I only need the label */
+#check{
+  display: none;
+}
+
+.button{
+  width: 48px;
+  height: 48px;
+  background: rgb(255, 196, 0);
+  padding: 12px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  padding-top: 8px;
+  line-height: 8px;
+  text-align: left;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 201;
+}
+.button:hover{
+  background: #ff9d00;
+}
+.button span{
+  height: 3px;
+  width: 100%;
+  background: white;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(.62,.43,.35,1.47);
+}
+
+
+/* toggle icon animation */
+#check:checked ~ .button span:nth-child(1){
+  width: 100%;
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+#check:checked ~ .button span:nth-child(2){
+  width: 0;
+}
+
+#check:checked ~ .button span:nth-child(3){
+  width: 100%;
+  transform: rotate(-45deg) translateY(-7px) translateX(7px);
+}
+
+
+/* the nav height is set to 0 when the navbar is closed */
+
+nav{
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 25px -726px;
+  background: black;
+  height: 0;
+}
+nav a{
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  font-size: 22px;
+  transition: all 0.4s cubic-bezier(.22,.43,.35,1.5);
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: top;
+  text-align: center;
+  line-height-step: 10px;
+  border-bottom: 1px solid #b4ac97;
+}
+
+nav a:hover{
+  background: #ffdd7f;
+}
+
+/* the nav height will be set to the height in pixels that would have for default, using height:auto won't work but you can put that value in pixels creating the slide*/
+#check:checked ~ nav{
+  height: 100vh;
+}
+
+#check:checked ~ nav a{
+  padding: 10px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+  
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+a
+{
+    text-decoration: none;
+}
+#page1 {
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    padding: 0 1vw;
+    padding-top: 20vh
+}
+#page2{
+    min-height: 220vh;
+    /* background-color: aqua; */
+    position: relative;
+    width: 100%;
+    padding: 0 15vw;
+    padding-top: 25vh;
+    margin-top: -40vh   ;
+
+}
+
+
+.listing
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+  /*just for pen positioning*/
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+}
+
+.product
+{
+  width: 240px;
+  position: relative;
+}
+
+.product a
+{
+  text-decoration: none;
+}
+
+.img-wrapper
+{
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: 1px solid #afafaf;
+  border-bottom: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.img-wrapper img
+{
+  width: 200px;
+  height: 300px;
+  object-fit: cover
+}
+
+.info
+{
+  width: 100%;
+  background: #000;
+  color: #fff;
+  position: relative;
+  padding: 40px 10px 20px 10px;
+  text-align: center;
+  
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+  backface-visibility: hidden;
+  transition-property: color,height;
+  transition-duration: 0.3s,0.4s;
+  transition-timing-function: ease-out;
+  height: 83px;
+}
+
+.info:before
+{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  transform: scaleY(0);
+  transform-origin: 50%;
+  transition: transform 0.3s ease-out;
+}
+
+.info:after
+{
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-style: solid;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  left: calc(50% - 11px);
+  bottom: 0;
+  border-width: 10px 10px 0 10px;
+  border-color: black transparent transparent transparent;
+}
+
+.product:hover .info
+{
+  height: 40px;
+}
+
+.product:hover .info:before
+{
+  transform: scaleY(0.7);
+}
+
+.product:hover .info:after
+{
+  visibility: visible;
+  transform: translateY(10px);
+}
+
+.title
+{
+  transition: transform 0.3s ease-out;
+}
+.title a
+{
+  color: inherit;
+}
+.product:hover .title
+{
+  transform: translateY(-18px);
+  font-weight: bold;
+  color: #000;
+}
+
+.price
+{
+  background: #e32d2c;
+  position: absolute;
+  font-size: 1.3em;
+  padding: 4px 13px;
+  top: -15px;
+  right: 10px;
+}
+
+.price.sale
+{
+  background: #00ba2f;
+}
+
+.price.old
+{
+  font-size: 0.95em;
+  padding: 4px 6px;
+  text-decoration: line-through;
+  top: -43px;
+}
+
+.actions-wrapper
+{
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-around;
+  visibility: hidden;
+}
+
+.actions-wrapper *
+{
+  width: 50%;
+  padding: 2px 0;
+  text-align: center;
+  color: #191919;
+  font-size: 0.95em;
+  font-weight: bold;
+}
+.actions-wrapper *:before
+{
+  font-family: "FontAwesome";
+  margin-right: 8px;
+}
+.wishlist
+{
+  border-right: 1px solid #afafaf;
+}
+.wishlist:hover
+{
+  color: #e32d2c;
+}
+.wishlist:before
+{
+  content: "\f08a";
+}
+
+.cart:hover
+{
+  color: #0a75b9;
+}
+.cart:before
+{
+  content: "\f07a";
+}
+
+.product:hover .actions-wrapper *
+{
+  visibility: visible;
+}
+
+.note
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 8px;
+  font-size: 0.9em;
+}
+
+.note.on-sale
+{
+  background: #00ba2f;
+  color: #fff;
+}
+
+.note.no-stock
+{
+  background: #191919;
+  color: #fff;
+}
+
+#page3.pagenation{
+    margin-left: 50%;
+    display: flex;
+       
+}
+  #page4 .container{
+    max-width: 1170px;
+    margin:auto;
+  }
+  #page4 .row{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #page4 ul{
+    list-style: none;
+  }
+  #page4 .footer{
+    background-color: black;
+      padding: 70px 0;
+  }
+  #page4 .footer-col{
+     width: 25%;
+     padding: 0 15px;
+  }
+  #page4 .footer-col h4{
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+  }
+  #page4 .footer-col h4::before{
+    content: '';
+    position: absolute;
+    left:0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+  }
+  #page4 .footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+  }
+  #page4 .footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  #page4 .footer-col ul li a:hover{
+    color: #ffffff;
+    padding-left: 8px;
+  }
+  #page4 .footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin:0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+  }
+  #page4 .footer-col .social-links a:hover{
+    color: #24262b;
+    background-color: #ffffff;
+  }
+  
